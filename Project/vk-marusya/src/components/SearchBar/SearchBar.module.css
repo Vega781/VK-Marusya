@@ -1,0 +1,15 @@
+.search__bar {
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 30px;
+    background-color: #393B3C;
+    color: white;
+}
+
+.search__img {
+    width: 24px;
+    height: 24px;
+    padding: 12px 12px 12px 0;
+    margin-left: 16px;
+}
