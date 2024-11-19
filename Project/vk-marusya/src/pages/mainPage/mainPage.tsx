@@ -1,21 +1,13 @@
 import { ImageComp } from '../../components/ImageComp/ImageComp'
 import styles from '../../styles/mainPage.module.css'
-import image from '../../assets/test-image.jpg'
 import { Button } from '../../components/Button/Button'
 import { ListTop } from '../../components/ListTop/ListTop'
+import { getMovies, getRandomMovie } from '../../api/Movies'
+import { getGenresList } from '../../utils/genreList'
+import { convertRunTime } from '../../utils/convertRunTime'
 
-const items = [
-    'https://avatars.mds.yandex.net/i?id=78dbd5a7f8b4a72a2b459fa81c3b2119fce82214-12422078-images-thumbs&n=13',
-    'https://avatars.mds.yandex.net/i?id=68a4b4fe09f4c2865f4446bce0b18a41fee39916-12715029-images-thumbs&n=13',
-    'https://avatars.mds.yandex.net/i?id=d359cb45c43b8708a57898cefb47b01e43753ab3-4468364-images-thumbs&n=13',
-    'https://avatars.mds.yandex.net/i?id=6d63867ce125a919ab022b107e452c06b62cb323eefa549e-12822619-images-thumbs&n=13',
-    'https://avatars.mds.yandex.net/i?id=6e18f7b4d5f143f17f60d9753e8ffd8f875e4f14-10229484-images-thumbs&n=13',
-    'https://avatars.mds.yandex.net/i?id=78dbd5a7f8b4a72a2b459fa81c3b2119fce82214-12422078-images-thumbs&n=13',
-    'https://avatars.mds.yandex.net/i?id=68a4b4fe09f4c2865f4446bce0b18a41fee39916-12715029-images-thumbs&n=13',
-    'https://avatars.mds.yandex.net/i?id=d359cb45c43b8708a57898cefb47b01e43753ab3-4468364-images-thumbs&n=13',
-    'https://avatars.mds.yandex.net/i?id=6d63867ce125a919ab022b107e452c06b62cb323eefa549e-12822619-images-thumbs&n=13',
-    'https://avatars.mds.yandex.net/i?id=6e18f7b4d5f143f17f60d9753e8ffd8f875e4f14-10229484-images-thumbs&n=13',
-]
+const items = await getMovies();
+const randomMovie = await getRandomMovie();
 
 export const MainPage = () => {
     return (
@@ -30,24 +22,24 @@ export const MainPage = () => {
                                         <path d="M8.00105 12.1734L3.29875 14.8055L4.34897 9.51997L0.392578 5.86124L5.74394 5.22675L8.00105 0.333374L10.2581 5.22675L15.6095 5.86124L11.6531 9.51997L12.7033 14.8055L8.00105 12.1734Z" fill="white" />
                                     </svg>
                                 </span>
-                                <span className={styles.rating__number}>7,5</span>
+                                <span className={styles.rating__number}>{randomMovie.tmdbRating}</span>
                             </div>
                         </div>
                         <div className={styles.stats__item}>
-                            <span className={styles.random__release}>1979</span>
+                            <span className={styles.random__release}>{randomMovie.releaseYear}</span>
                         </div>
                         <div className={styles.stats__item}>
-                            <span className={styles.random__genre}>Детектив</span>
+                            <span className={styles.random__genre}>{getGenresList(randomMovie.genres)}</span>
                         </div>
                         <div className={styles.stats__item}>
-                            <span className={styles.random__duration}>1 ч 7 мин</span>
+                            <span className={styles.random__duration}>{convertRunTime(randomMovie.runtime)}</span>
                         </div>
                     </div>
                     <h1 className={styles.random__title}>
-                        Шерлок Холмс и доктор Ватсон: Знакомство
+                        {randomMovie.title}
                     </h1>
                     <div className={styles.random__description}>
-                        Увлекательные приключения самого известного сыщика всех времен
+                        {randomMovie.plot}
                     </div>
                     <div className={styles.buttons__container}>
                         <Button className={styles.random__button} onClick={() => { }}>Трейлер</Button>
@@ -66,7 +58,7 @@ export const MainPage = () => {
                     </div>
                 </div>
                 <div className={styles.right__content}>
-                    <ImageComp path={image} alt={'MainPage Image'} className={styles.main__image} />
+                    <ImageComp path={randomMovie.posterUrl} alt={'MainPage Image'} className={styles.main__image} />
                 </div>
             </div>
             <div className={styles.top10}>

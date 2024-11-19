@@ -30,8 +30,11 @@
 }
 
 .stats__item:not(:last-child) {
-    align-self: center;
     margin-right: 16px;
+}
+
+.stats__item {
+    align-self: center;
 }
 
 .stats__item:not(:first-child) {
