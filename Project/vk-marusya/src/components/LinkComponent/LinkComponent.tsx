@@ -6,7 +6,7 @@ export interface ILinkProps {
     className?: string;
 }
 
-export const Link: FC<ILinkProps> = ({children, href, ...props}) => {
+export const LinkComponent: FC<ILinkProps> = ({children, href, ...props}) => {
     return (
         <a href={href} {...props}>
             {children}

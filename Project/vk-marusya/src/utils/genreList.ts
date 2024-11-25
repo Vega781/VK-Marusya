@@ -1,3 +1,3 @@
 export function getGenresList(genres: string[]) {
-    return genres.map((genre: string) => `${genre} `);
+    return genres.join(', ') ? genres.join(', ') : 'unknown';
 }

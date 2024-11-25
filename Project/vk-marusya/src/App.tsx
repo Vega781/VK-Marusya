@@ -1,16 +1,27 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import styles from './App.module.css'
 import { Footer } from './components/Footer/Footer'
 import { Header } from './components/Header/Header'
-import { MainPage } from './pages/mainPage/mainPage'
+import { MainPage } from './pages/MainPage/MainPage'
+import { GenresPage } from './pages/genresPage/GenresPage'
+import { ListByGenre } from './components/ListByGenre/ListByGenre'
+import { MoviePage } from './pages/MoviePage/MoviePage'
 
 function App() {
-  return (
-    <div className={styles.container}>
-        <Header />
-        <MainPage />
-        <Footer />
-    </div>
-  )
+    return (
+        <BrowserRouter>
+            <div className={styles.container}>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/movie/:id" element={<MoviePage />} />
+                    <Route path="/genres" element={<GenresPage />} />
+                    <Route path="/genres/:genre" element={<ListByGenre />} />
+                </Routes>
+                <Footer />
+            </div>
+        </BrowserRouter>
+    )
 }
 
 export default App

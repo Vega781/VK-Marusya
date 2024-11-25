@@ -1,0 +1,32 @@
+.back__link {
+    text-decoration: none;
+    width: fit-content;
+    font-weight: 700;
+    line-height: 56px;
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+    border-radius:50px;
+    margin-bottom: 64px;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.back__link:hover {
+    background-color: #74747460;
+}
+
+.back__h1 {
+    margin: 0;
+    margin-right: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.list__item {
+    transition: transform 0.15s ease-in-out;
+}
+
+.list__item:hover {
+    transform: scale(1.1);
+}

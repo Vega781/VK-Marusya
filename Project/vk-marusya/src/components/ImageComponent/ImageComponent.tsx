@@ -6,7 +6,7 @@ export interface IImageProps {
     className?: string;
 }
 
-export const ImageComp: FC<IImageProps> = ({ path, alt, ...props }) => {
+export const ImageComponent: FC<IImageProps> = ({ path, alt, ...props }) => {
     return (
         <img src={path} alt={alt} {...props}/>
     )
