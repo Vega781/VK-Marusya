@@ -8,7 +8,7 @@ import { MovieType } from "../../types/MovieType"
 import { useParams } from "react-router-dom"
 import { getCurrentMovie } from "../../api/Movies"
 import { convertRunTime } from "../../utils/convertRunTime"
-import { getGenresList } from "../../utils/genreList"
+import { showGenres } from "../../utils/showGenres"
 import { ratingColor } from "../../utils/ratingColor"
 import { formatBudget } from "../../utils/formatBudget"
 import { convertLanguage } from "../../utils/convertLanguages/convertLanguage"
@@ -30,7 +30,7 @@ export const MoviePage = () => {
     return (
         <>
             {loading ? (
-                <Load />
+                <Load type="box-rotate-z" bgColor={'white'} title={'LOADING...'} size={100} />
             ) : (
                 <>
                     <div className={`${styles.random__container} ${movieStyles.movie__container}`}>
@@ -50,7 +50,7 @@ export const MoviePage = () => {
                                     <span className={styles.random__release}>{movie.releaseYear}</span>
                                 </div>
                                 <div className={styles.stats__item}>
-                                    <span className={styles.random__genre}>{getGenresList(movie.genres)}</span>
+                                    <span className={styles.random__genre}>{showGenres(movie.genres)}</span>
                                 </div>
                                 <div className={styles.stats__item}>
                                     <span className={styles.random__duration}>{convertRunTime(movie.runtime)}</span>

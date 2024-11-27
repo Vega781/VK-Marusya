@@ -21,3 +21,7 @@ export function getMoviesByGenre(genreId: string): Promise<MovieType> {
 export function getCurrentMovie(movieId: string): Promise<MovieType> {
     return fetch(`${api_url}/movie/${movieId}`).then(res => res.json())
 }
+
+export function getMoviesByTitle(title: string): Promise<MovieType> {
+    return fetch(`${api_url}/movie?title=${title}`).then(res => res.json())
+}

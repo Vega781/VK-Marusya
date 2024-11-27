@@ -1,7 +1,7 @@
 import { Button } from "../Button/Button"
 import { ImageComponent } from "../ImageComponent/ImageComponent"
 import styles from '../../styles/mainPage.module.css'
-import { getGenresList } from "../../utils/genreList"
+import { showGenres } from "../../utils/showGenres"
 import { convertRunTime } from "../../utils/convertRunTime"
 import { ratingColor } from "../../utils/ratingColor"
 import { getRandomMovie } from "../../api/Movies"
@@ -31,7 +31,7 @@ export const RandomMovie = () => {
     return (
         <div>
             {loading ? (
-                <Load />
+                <Load type="box-rotate-z" bgColor={'white'} title={'LOADING...'} size={100} />
             ) : (
                 <div className={styles.random__container}>
                     <div className={styles.left__content}>
@@ -50,7 +50,7 @@ export const RandomMovie = () => {
                                 <span className={styles.random__release}>{movie.releaseYear}</span>
                             </div>
                             <div className={styles.stats__item}>
-                                <span className={styles.random__genre}>{getGenresList(movie.genres)}</span>
+                                <span className={styles.random__genre}>{showGenres(movie.genres)}</span>
                             </div>
                             <div className={styles.stats__item}>
                                 <span className={styles.random__duration}>{convertRunTime(movie.runtime)}</span>
@@ -79,7 +79,7 @@ export const RandomMovie = () => {
                         </div>
                     </div>
                     <div className={styles.right__content}>
-                        <ImageComponent path={movie.backdropUrl ? movie.backdropUrl : 'https://avatars.mds.yandex.net/i?id=ce47ed74489a398ec94aeabb44879dea_l-5319082-images-thumbs&n=13'} alt={'MainPage Image'} className={styles.main__image} />
+                        <ImageComponent path={movie.backdropUrl ? movie.backdropUrl : movie.posterUrl } alt={'MainPage Image'} className={styles.main__image} />
                     </div>
                 </div>
             )}

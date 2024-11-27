@@ -23,7 +23,7 @@ export const ListTop = () => {
     return (
         <div>
             {loading ? (
-                <Load />
+                <Load type="box-rotate-z" bgColor={'white'} title={'LOADING...'} size={100} />
             ) : (
                 <div className={styles.top10}>
                     <div className={styles.top10__container}>

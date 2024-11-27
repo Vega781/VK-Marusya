@@ -22,7 +22,7 @@ export const GenresList = () => {
     return (
         <div>
             {loading ? (
-                <Load />
+                <Load type="box-rotate-z" bgColor={'white'} title={'LOADING...'} size={100} />
             ) : (
                 <div className={styles.container}>
                     <div className={styles.genres__container}>
