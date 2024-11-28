@@ -2,20 +2,20 @@ import { z } from "zod"
 import { validateResponse } from "../utils/validateResponse"
 import { api_url } from "./url"
 
-export const UserSchema = z.object({
+export const ProfileSchema = z.object({
     /**
      * Идентификатор пользователя
      */
     email: z.string(),
-    password: z.string(),
+    favorites: z.array(z.string()),
     name: z.string(),
     surname: z.string(),
 })
 
-export type User = z.infer<typeof UserSchema>
+export type Profile = z.infer<typeof ProfileSchema>
 
 export function registerUser(
-    email: string, 
+    email: string,
     password: string,
     name: string,
     surname: string,
@@ -30,7 +30,7 @@ export function registerUser(
 }
 
 export function loginUser(
-    email: string, 
+    email: string,
     password: string
 ): Promise<void> {
     return fetch(`${api_url}/auth/login`, {
@@ -42,9 +42,9 @@ export function loginUser(
     }).then(validateResponse).then(() => undefined)
 }
 
-export function fetchMe(): Promise<User> {
-    return fetch(`${api_url}/profile`)
+export function fetchMe(): Promise<Profile> {
+    return fetch(`/profile`)
         .then(validateResponse)
         .then((response) => response.json())
-        .then((data) => UserSchema.parse(data))
+        .then((data) => ProfileSchema.parse(data))
 }

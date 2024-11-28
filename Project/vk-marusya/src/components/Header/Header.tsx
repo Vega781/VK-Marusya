@@ -5,10 +5,24 @@ import { SearchBar } from "../SearchBar/SearchBar"
 import { Link } from 'react-router-dom'
 import { AuthForm } from '../AuthForm/AuthForm'
 import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { fetchMe } from '../../api/Users'
+import { queryClient } from '../../api/queryClient'
 
 export const Header = () => {
 
     const [isOpen, setIsOpen] = useState(false)
+    const [isAuth, setIsAuth] = useState(false)
+
+    const authUser = useQuery({
+        queryFn: () => fetchMe(),
+        queryKey: ['profile'],
+        retry: 0,
+    }, queryClient)
+
+    if (authUser.status === 'success') {
+        setIsAuth(true)
+    }
 
     const handleOpenAuth = () => {
         setIsOpen(true)
@@ -26,7 +40,11 @@ export const Header = () => {
                     <Link to="/genres" className={styles.nav__links}>Жанры</Link>
                     <SearchBar className={styles.search__container} />
                 </nav>
-                <Button className={styles.button} onClick={handleOpenAuth}>Войти</Button>
+                {isAuth ? (
+                    <Link to="/profile" className={styles.nav__links}>Профиль</Link>
+                ) : (
+                    <Button className={styles.button} onClick={handleOpenAuth}>Войти</Button>
+                ) }
             </div>
         </>
     )

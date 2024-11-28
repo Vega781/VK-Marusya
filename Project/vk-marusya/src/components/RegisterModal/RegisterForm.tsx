@@ -48,7 +48,7 @@ export const RegisterForm = () => {
     return (
         <form className={styles.login__container}>
             <div className={styles.logo__container}>
-                <img className={styles.login__logo} src='../../../public/whitelogo.svg' alt="Logo" />
+                <img className={styles.login__logo} src='/whitelogo.svg' alt="Logo" />
             </div>
             <div className={styles.login__form}>
                 <div className={styles.box}>

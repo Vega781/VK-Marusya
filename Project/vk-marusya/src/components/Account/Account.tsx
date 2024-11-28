@@ -2,15 +2,13 @@ import { useQuery } from "@tanstack/react-query"
 import { fetchMe } from "../../api/Users"
 import { queryClient } from "../../api/queryClient";
 import { AuthForm } from "../AuthForm/AuthForm";
-// import { MainPage } from "../../pages/MainPage/MainPage";
 import { Load } from "../Loader/Loader";
-import { UserPage } from "../../pages/userPage/UserPage";
 
 export const Account = () => {
     const authorizedUser = useQuery({
         queryFn: () => fetchMe(),
-        queryKey: ['profile'],
-        retry: 1,
+        queryKey: ['no'],
+        retry: 0,
     }, queryClient);
 
     switch (authorizedUser.status) {
@@ -18,9 +16,9 @@ export const Account = () => {
             return <Load type={"cube-rotate-z"} bgColor={"white"} size={100} />;
         case "success":
             return (
-                <UserPage />
+                <AuthForm isOpen={false} onClose={() => { }} />
             );
         case "error":
-            return <AuthForm isOpen={false} onClose={() => {}}/>;
+            return console.log(authorizedUser.error);
     }
 }
