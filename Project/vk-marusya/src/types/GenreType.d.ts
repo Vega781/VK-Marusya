@@ -1,4 +1,7 @@
 export const GenreSchema = z.object({
+    /**
+     * Идентификатор жанра
+     */
     genre: z.array(z.number())
 })
 

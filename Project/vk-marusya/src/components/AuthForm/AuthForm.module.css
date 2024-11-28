@@ -1,0 +1,46 @@
+.modal__content {
+    position: relative;
+    max-width: 420px;
+    max-height: fit-content;
+    background-color: white;
+    border-radius: 24px;
+}
+
+.modal__close {
+    display: flex;
+    border: none;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px;
+    position: absolute;
+    z-index: 1000;
+    left: 105%;
+    cursor: pointer;
+}
+
+.auth__form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth__button {
+    border: none;
+    position: absolute;
+    bottom: 54px;
+}
+
+.authButton {
+    border: none;
+    background: none;
+    font-weight: 700;
+    line-height: 24px;
+    font-size: 18px;
+    color: black;
+    cursor: pointer;
+}

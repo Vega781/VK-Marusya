@@ -8,6 +8,8 @@ import { ListByGenre } from './components/ListByGenre/ListByGenre'
 import { MoviePage } from './pages/MoviePage/MoviePage'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
+import { UserPage } from './pages/userPage/UserPage'
+import { Account } from './components/Account/Account'
 
 function App() {
     return (
@@ -15,8 +17,10 @@ function App() {
             <BrowserRouter>
                 <div className={styles.container}>
                     <Header />
+                    <Account />
                     <Routes>
                         <Route path="/" element={<MainPage />} />
+                        <Route path="/profile" element={<UserPage />} />
                         <Route path="/movie/:id" element={<MoviePage />} />
                         <Route path="/genres" element={<GenresPage />} />
                         <Route path="/genres/:genre" element={<ListByGenre />} />
