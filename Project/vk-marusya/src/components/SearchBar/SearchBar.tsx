@@ -4,6 +4,7 @@ import searchImg from '../../assets/search.png'
 import { SearchWindow } from '../SearchWindow/SearchWindow';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setSearchText } from '../../store/slices/searchTextSlice';
+import { useSearchParams } from 'react-router-dom';
 
 
 export interface ISearchBar {
@@ -11,19 +12,30 @@ export interface ISearchBar {
 }
 
 export const SearchBar: FC<ISearchBar> = ({ ...props }) => {
-
     const dispatch = useAppDispatch();
+    const [searchParams, setSearchParams] = useSearchParams();
     const textSearch = useAppSelector(state => state.searchText.value);
-    const [text, setText] = useState<string>('')
-    const [showWindow, setShowWindow] = useState<boolean>(false)
+    const [text, setText] = useState<string>('');
+    const [showWindow, setShowWindow] = useState<boolean>(false);
+    
+    // При монтировании проверяем URL параметры
+    useEffect(() => {
+        const querySearch = searchParams.get('search') || '';
+        if (querySearch) {
+            dispatch(setSearchText(querySearch));
+        }
+    }, [dispatch, searchParams]);
     
     useEffect(() => {
-        setText(textSearch)
-        setShowWindow(textSearch.length > 0)
-    }, [textSearch])
+        setText(textSearch);
+        setShowWindow(textSearch.length > 0);
+        // Синхронизируем URL с состоянием Redux
+        setSearchParams(textSearch ? { search: textSearch } : {});
+    }, [textSearch, setSearchParams]);
     
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(setSearchText(event.target.value));
+        const newText = event.target.value;
+        dispatch(setSearchText(newText));
     };
     
     return (
