@@ -40,6 +40,8 @@ export const RegisterForm: FC<IRegisterFormProps> = ({ onSuccess }) => {
             setFirstNameError('Заполните поле!')
         } else if (!lastname) {
             setLastNameError('Заполните поле!')
+        } else if (!password) {
+            setPasswordError('Заполните пароль!')
         } else if (password.length <= 8) {
             setPasswordError('Пароль должен быть больше 8 символов')
         } else if (password !== confirmPassword) {
