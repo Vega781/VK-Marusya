@@ -18,7 +18,7 @@ export const AuthForm: FC<AuthProps> = ({ isOpen, onClose }) => {
     };
 
     const handleAuthSuccess = () => {
-        setAuthType('login')
+        setAuthType('register')
         queryClient.invalidateQueries({ queryKey: ['profile'] });
     };
     
