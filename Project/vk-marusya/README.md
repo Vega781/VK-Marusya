@@ -34,7 +34,7 @@ Web application for viewing movie information with authorization, search, and fa
 git clone https://github.com/Vega781/vk-marusya.git
 ```
 ```bash
-cd vk-marusya
+cd vk-marusya\Project\vk-marusya\
 ```
 2. Install dependencies:
 ```bash
