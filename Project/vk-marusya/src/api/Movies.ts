@@ -26,3 +26,28 @@ export function getCurrentMovie(movieId: string): Promise<MovieType> {
 export function getMoviesByTitle(title: string): Promise<MovieType> {
     return fetch(`${api_url}/movie?title=${title}`).then(res => validateResponse(res)).then(res => res.json())
 }
+
+export function getFavoriteMovies(): Promise<string[]> {
+    return fetch(`${api_url}/favorites`, {credentials: 'include'}).then(res => validateResponse(res)).then(res => res.json())
+}
+
+export function addFavoriteMovie(movieId: string): Promise<MovieType> {
+    return fetch(`${api_url}/favorites`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({ id: movieId })
+    }).then(validateResponse).then(() => undefined)
+}
+
+export function removeFavoriteMovie(movieId: string): Promise<MovieType> {
+    return fetch(`${api_url}/favorites/${movieId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+    }).then(validateResponse).then(() => undefined)
+}

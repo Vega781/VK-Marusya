@@ -1,16 +1,17 @@
 import { useMutation } from '@tanstack/react-query';
 import styles from './LoginForm.module.css'
 import { queryClient } from '../../api/queryClient';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { loginUser } from '../../api/Users';
 import { isValidEmail } from '../../validators/validateEmail';
-import { useAppDispatch } from '../../store/hooks';
-import { closeAuthModal } from '../../store/slices/authSlice';
+import { AxiosError } from 'axios';
 
+interface ILoginFormProps {
+    onSuccess: () => void;
+    onClose: () => void;
+}
 
-export const LoginForm = () => {
-    const dispatch = useAppDispatch();
-
+export const LoginForm: FC<ILoginFormProps> = ({ onSuccess, onClose }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -21,7 +22,15 @@ export const LoginForm = () => {
         mutationFn: () => loginUser(email, password),
         onSuccess() {
             queryClient.invalidateQueries({ queryKey: ['profile'] });
-            dispatch(closeAuthModal());
+            onSuccess();
+            onClose();
+        },
+        onError(error: AxiosError) {
+            if (error.response?.status === 404) {
+                setEmailError('Пользователь с таким email не найден');
+            } else {
+                setPasswordError('Неверный логин или пароль');
+            }
         }
     },
         queryClient

@@ -1,0 +1,36 @@
+.account__container {
+    min-height: 100vh;
+}
+
+.container__1280 {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+
+.account__title {
+    margin: 64px 0;
+}
+
+.account__button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 0;
+}
+
+.account__button:first-child {
+    margin-right: 64px;
+}
+
+.account__button_active {
+    border-bottom: 1px solid #DC5DFC;
+}
+
+
+.button__text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

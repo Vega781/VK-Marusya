@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import styles from './RegisteForm.module.css'
 import { isValidEmail } from "../../validators/validateEmail";
 import { useMutation } from "@tanstack/react-query";
 import { registerUser } from "../../api/Users";
 import { queryClient } from "../../api/queryClient";
 
-export const RegisterForm = () => {
+interface IRegisterFormProps {
+    onSuccess: () => void;
+}
+
+export const RegisterForm: FC<IRegisterFormProps> = ({ onSuccess }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -24,6 +28,7 @@ export const RegisterForm = () => {
 
     if (registerMutation.isSuccess) {
         queryClient.invalidateQueries({ queryKey: ['profile'] });
+        onSuccess();
     }
 
     const handleSubmit = (event: { preventDefault: () => void; }) => {
@@ -35,7 +40,7 @@ export const RegisterForm = () => {
             setFirstNameError('Заполните поле!')
         } else if (!lastname) {
             setLastNameError('Заполните поле!')
-        } else if (password.length < 8) {
+        } else if (password.length <= 8) {
             setPasswordError('Пароль должен быть больше 8 символов')
         } else if (password !== confirmPassword) {
             setPasswordError('Пароли не совпадают')

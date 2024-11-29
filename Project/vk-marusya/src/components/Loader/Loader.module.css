@@ -1,12 +1,8 @@
 .loader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     display: flex;
+    padding: 100px;
+    max-width: 100%;
+    min-height: 100%;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to bottom, #67A5EB, #A393F5, white), linear-gradient(to bottom, #272424, #413f3f);
-    background-blend-mode: multiply;
 }

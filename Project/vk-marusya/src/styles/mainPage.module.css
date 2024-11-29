@@ -153,11 +153,18 @@
     width: 224px;
     height: 336px;
     border-radius: 16px;
-    transition: transform 0.15s ease-in-out;
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.15), /* внутреннее свечение */
+                0 0 60px rgba(255, 255, 255, 0.1),  /* среднее свечение */
+                0 0 90px rgba(255, 255, 255, 0.05); /* внешнее рассеянное свечение */
+    border-radius: 12px;
 }
 
 .top10__item:hover {
-    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2),
+                0 0 80px rgba(255, 255, 255, 0.15),
+                0 0 120px rgba(255, 255, 255, 0.1);
 }
 
 .top10__item:before {

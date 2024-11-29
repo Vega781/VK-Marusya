@@ -22,11 +22,3 @@
     justify-content: start;
     align-items: center;
 }
-
-.list__item {
-    transition: transform 0.15s ease-in-out;
-}
-
-.list__item:hover {
-    transform: scale(1.1);
-}

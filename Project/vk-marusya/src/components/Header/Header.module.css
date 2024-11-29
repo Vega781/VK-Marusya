@@ -48,6 +48,15 @@
     font-family: 'Play';
 }
 
+.account__links {
+    text-decoration: none;
+    color: white;
+    padding: 10px 30px;
+    font-size: 24px;
+    font-weight: 400;
+    font-family: 'Play';
+}
+
 .button {
     background-color: transparent;
     border: none;

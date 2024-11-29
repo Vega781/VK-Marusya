@@ -12,7 +12,7 @@ export const ProfileSchema = z.object({
     surname: z.string(),
 })
 
-export type Profile = z.infer<typeof ProfileSchema>
+export type ProfileType = z.infer<typeof ProfileSchema>
 
 export function registerUser(
     email: string,
@@ -38,12 +38,21 @@ export function loginUser(
         headers: {
             "Content-Type": "application/json",
         },
+        credentials: 'include',
         body: JSON.stringify({ email, password }),
     }).then(validateResponse).then(() => undefined)
 }
 
-export function fetchMe(): Promise<Profile> {
-    return fetch(`/profile`)
+export function logoutUser(): Promise<void> {
+    return fetch(`${api_url}/auth/logout`, {
+        credentials: 'include'
+    }).then(() => undefined)
+}
+
+export function fetchMe(): Promise<ProfileType> {
+    return fetch(`${api_url}/profile`, {
+        credentials: 'include'
+    })
         .then(validateResponse)
         .then((response) => response.json())
         .then((data) => ProfileSchema.parse(data))

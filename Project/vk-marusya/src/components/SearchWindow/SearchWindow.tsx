@@ -36,7 +36,7 @@ export const SearchWindow = ({ text }: { text: string }) => {
                 <Load type="bubble-top" bgColor={'white'} size={20} />
             ) : (
                 <ul className={styles.search__list}>
-                    {Array.isArray(list) && list.slice(0, 5).map((item, index) => (
+                    {Array.isArray(list) && list.map((item, index) => (
                         <li className={styles.search__item} key={index}>
                             <Link to={`/movie/${item.id}`} className={styles.search__link} onClick={handleClearText}>
                                 <div className={styles.item__container}>
