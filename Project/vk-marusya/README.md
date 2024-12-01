@@ -10,6 +10,7 @@ Web application for viewing movie information with authorization, search, and fa
 - Watch trailers
 - User authorization
 - Add movies to favorites
+- Responsive design
 
 ## 📋 Requirements
 
