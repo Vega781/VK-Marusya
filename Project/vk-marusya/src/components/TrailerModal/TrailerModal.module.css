@@ -29,3 +29,49 @@
     width: 960px;
     height: 540px;
 }
+
+@media (max-width: 1070px) {
+    .modal__close {
+        display: flex;
+        border: none;
+        padding: 10px;
+        width: fit-content;
+        height: fit-content;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100px;
+        position: absolute;
+        z-index: 1000;
+        left: 95%;
+        top: -50px;
+        cursor: pointer;
+    }
+
+    .trailer__video {
+        max-width: 663px;
+        max-height: 375px;
+    }
+
+    .modal__content {
+        max-width: 663px;
+        max-height: 375px;
+    }
+}
+
+
+@media (max-width: 640px) {
+    
+    .modal__close {
+        left: 45%;
+    }
+
+    .trailer__video {
+        max-width: 375px;
+        max-height: 212px;
+    }
+
+    .modal__content {
+        max-width: 375px;
+        max-height: 212px;
+    }
+}

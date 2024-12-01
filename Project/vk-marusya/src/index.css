@@ -195,6 +195,14 @@ img {
  * 2. Remove the margin in Firefox and Safari.
  */
 
+button {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+button:active {
+    opacity: 0.5;
+}
+
 button,
 input,
 optgroup,

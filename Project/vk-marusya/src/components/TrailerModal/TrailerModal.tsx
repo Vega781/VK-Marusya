@@ -38,10 +38,11 @@ export const TrailerModal: FC<ITrailerModalProps> = ({ id, isOpen, onClose }) =>
                 ) : (
                     <div className={styles.trailer__container}>
                         <YouTube
+                            className={styles.trailer__video}
                             videoId={getTrailerId(video.trailerUrl)}
                             opts={{
-                                width: '960',
-                                height: '540',
+                                width: '100%',
+                                height: '100%',
                                 playerVars: {
                                     autoplay: 1,
                                     volume: 0.5,

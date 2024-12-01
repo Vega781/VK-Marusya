@@ -34,3 +34,16 @@
     align-items: center;
     gap: 8px;
 }
+
+@media (max-width: 500px) {
+
+    .account__nav {
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .account__button:first-child {
+        margin-right: 24px;
+    }
+}

@@ -22,7 +22,7 @@ export const AccountSettings: FC<AccountSettingsProps> = ({ data }) => {
     }
 
     return (
-        <>
+        <div className={styles.settings__container}>
             <div className={styles.settings__bio}>
                 <div className={styles.settings__fullname}>
                     <div className={styles.settings__initials}>
@@ -46,6 +46,6 @@ export const AccountSettings: FC<AccountSettingsProps> = ({ data }) => {
                 </div>
             </div>
             <Button className={styles.exit__button} onClick={handleLogout}>Выйти из аккаунта</Button>
-        </>
+        </div>
     )
 }

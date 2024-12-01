@@ -56,3 +56,9 @@
     border-radius: 16px;
     filter: brightness(0.7);
 }
+
+@media (max-width: 1440px) {
+    .favorites__list {
+        justify-content: center;
+    }
+}

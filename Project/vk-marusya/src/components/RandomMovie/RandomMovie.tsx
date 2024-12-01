@@ -56,6 +56,9 @@ export const RandomMovie = () => {
                 <Load type="box-rotate-z" bgColor={'white'} title={'LOADING...'} size={100} />
             ) : (
                 <div className={styles.random__container}>
+                    <div className={styles.content__1300}>
+                        <ImageComponent path={movie.backdropUrl ? movie.backdropUrl : movie.posterUrl} alt={'MainPage Image'} className={styles.main__image} />
+                    </div>
                     <div className={styles.left__content}>
                         <div className={styles.random__stats}>
                             <div className={styles.stats__item}>

@@ -44,3 +44,11 @@
     color: black;
     cursor: pointer;
 }
+
+@media (max-width: 480px) {
+    
+    .modal__close {
+        top: 5px;
+        left: 85%;
+    }
+}

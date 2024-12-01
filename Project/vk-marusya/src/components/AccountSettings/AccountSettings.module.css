@@ -87,3 +87,18 @@
     line-height: 24px;
     cursor: pointer;
 }
+
+@media (max-width: 500px) {
+    .settings__bio {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+
+    .settings__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

@@ -17,6 +17,10 @@
     padding: 8px 0;
 }
 
+.logo__small {
+    display: none;
+}
+
 .logo__img {
     max-height: 32px;
     max-width: 145px;
@@ -26,6 +30,10 @@
     display: flex;
     flex-direction: row;
     width: 900px;
+}
+
+.nav__icons {
+    display: none;
 }
 
 .search__container {
@@ -38,6 +46,28 @@
     margin: 0 20px;
 }
 
+.search__1400 {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #393B3C;
+    border-radius: 10px;
+    margin: 0 20px;
+}
+
+.mobile__search {
+    display: none;
+    position: absolute;
+    top: 70px;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    background-color: #393B3C;
+    border-radius: 10px;
+}
+
 .nav__links {
     text-decoration: none;
     color: white;
@@ -48,7 +78,7 @@
     font-family: 'Play';
 }
 
-.account__links {
+.account__link {
     text-decoration: none;
     color: white;
     padding: 10px 30px;
@@ -66,4 +96,92 @@
     font-weight: 400;
     font-family: 'Play';
     cursor: pointer;
+}
+
+.content__1400 {
+    display: none;
+}
+
+@media (max-width: 1400px) {
+    .nav__icons {
+        display: flex;
+    }
+
+    .search__1400 {
+        display: flex;
+    }
+
+    .search__icon {
+        display: none;
+    }
+
+    .nav__icons:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    .nav__links {
+        display: none;
+    }
+
+    .nav__bar {
+        max-width: 900px;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .search__container {
+        display: none;
+    }
+
+    .content__1400 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+    }
+
+    .account__link,
+    .button {
+        display: none;
+    }
+
+    .icon__button {
+        width: 24px;
+        height: 24px;
+        background-color: transparent;
+        border: none;
+        color: white;
+        padding: 0;
+        font-size: 24px;
+        font-weight: 400;
+        font-family: 'Play';
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 700px) {
+    .search__1400 {
+        display: none;
+    }
+
+    .search__icon {
+        display: flex;
+    }
+
+    .mobile__search {
+        display: flex;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+    }
+}
+
+@media (max-width: 380px) {
+    .header__logo {
+        display: none;
+    }
+
+    .logo__small {
+        display: flex;
+    }
 }

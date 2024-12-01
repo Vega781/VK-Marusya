@@ -11,7 +11,7 @@
     margin: 20px;
     max-width: 560px;
     max-height: 480px;
-    width: 100%;
+    /* width: 100%; */
     border-radius: 8px;
     z-index: 2;
     background-color: #393B3C;
@@ -97,4 +97,39 @@
 
 .descr__title {
     margin: 0;
+}
+
+@media (max-width: 768px) {
+    .window__container {
+        overflow-y: auto;
+        position: absolute;
+        top: 65px;
+        padding: 15px;
+        margin: 0 10px;
+        max-width: 560px;
+        max-height: 480px;
+        border-radius: 8px;
+        z-index: 2;
+        background-color: #393B3C;
+    }
+}
+
+@media (max-width: 585px) {
+    .item__container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .descr__top {
+        flex-wrap: wrap;
+    }
+
+    .descr__item {
+        padding: 5px 0;
+    }
+
+    /* .item__descr {
+        margin: 0;
+        margin-top: 20px;
+    } */
 }
