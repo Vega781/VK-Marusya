@@ -7,7 +7,9 @@
 }
 
 .genres__container {
-    max-width: 1280px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .genres__title {
@@ -19,49 +21,88 @@
 } 
 
 .genres__list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    padding: 0;
+    list-style: none;
+    margin: 0;
 }
 
 .genre__item {
-    margin: 0 15px;
-    margin-bottom: 64px;
-    max-width: 290px;
-    max-height: 300px;
-    border-radius: 24px;
-    background-color: black;
-    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.genre__item:hover {
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2),
-                0 0 80px rgba(255, 255, 255, 0.15),
-                0 0 120px rgba(255, 255, 255, 0.1);
-}
-
-.genre__image {
-    max-width: 290px;
-    max-height: 300px;
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-}
-
-.item__title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 28px 0;
+    aspect-ratio: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    min-width: 180px;
 }
 
 .genre__link {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-    color: white;
+    display: block;
+    height: 100%;
     text-decoration: none;
+    position: relative;
+}
+
+.genre__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Адаптив */
+@media (max-width: 1200px) {
+    .genres__list {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 992px) {
+    .genres__list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .genres__list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .genres__container {
+        padding: 15px;
+    }
+
+    .item__title {
+        padding: 15px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .genres__list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .genres__container {
+        padding: 10px;
+    }
+
+    .genre__item {
+        min-width: unset;
+    }
 }

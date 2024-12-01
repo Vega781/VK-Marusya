@@ -15,6 +15,14 @@ export function getGenresList(): Promise<GenreType> {
     return fetch(`${api_url}/movie/genres`).then(res => validateResponse(res)).then(res => res.json())
 }
 
+export function getGenreImage(imageElement: HTMLImageElement): Promise<void> {
+    return fetch('https://placekitten.com/200/300')
+        .then(response => response.blob())
+        .then(blob => {
+            imageElement.src = URL.createObjectURL(blob);
+        })
+}
+
 export function getMoviesByGenre(genreId: string): Promise<MovieType> {
     return fetch(`${api_url}/movie?genre=${genreId}`).then(res => validateResponse(res)).then(res => res.json())
 }
@@ -28,7 +36,7 @@ export function getMoviesByTitle(title: string): Promise<MovieType> {
 }
 
 export function getFavoriteMovies(): Promise<string[]> {
-    return fetch(`${api_url}/favorites`, {credentials: 'include'}).then(res => validateResponse(res)).then(res => res.json())
+    return fetch(`${api_url}/favorites`, { credentials: 'include' }).then(res => validateResponse(res)).then(res => res.json())
 }
 
 export function addFavoriteMovie(movieId: string): Promise<MovieType> {

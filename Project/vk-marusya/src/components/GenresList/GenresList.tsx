@@ -4,6 +4,7 @@ import { GenreType } from '../../types/GenreType';
 import { getGenresList } from '../../api/Movies';
 import { Load } from '../Loader/Loader';
 import { Link } from 'react-router-dom';
+import { generateNiceGradient } from '../../utils/gradientGenerator';
 
 
 export const GenresList = () => {
@@ -31,9 +32,14 @@ export const GenresList = () => {
                             {Array.isArray(list) && list.map((item, index) => (
                                 <li className={styles.genre__item} key={index}>
                                     <Link to={`/genres/${item}`} className={styles.genre__link}>
-                                        <img className={styles.genre__image} src={
-                                            item.posterUrl ? item.posterUrl : 'https://avatars.mds.yandex.net/i?id=ce47ed74489a398ec94aeabb44879dea_l-5319082-images-thumbs&n=13'
-                                        } alt={`Image ${index + 1}`} />
+                                        <div 
+                                            className={styles.genre__image}
+                                            style={{ 
+                                                background: generateNiceGradient(),
+                                                width: '100%',
+                                                height: '100%'
+                                            }}
+                                        />
                                         <div className={styles.item__title}>
                                             <span>{item.charAt(0).toUpperCase() + item.slice(1)}</span>
                                         </div>
