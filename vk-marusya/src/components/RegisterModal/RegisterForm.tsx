@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import styles from './RegisteForm.module.css'
+import logo from '../../assets/blacklogo.png'
 import { isValidEmail } from "../../validators/validateEmail";
 import { useMutation } from "@tanstack/react-query";
 import { registerUser } from "../../api/Users";
@@ -68,7 +69,7 @@ export const RegisterForm: FC<IRegisterFormProps> = ({ onSuccess }) => {
             {regSuccess ? (
                 <div className={styles.success__container}>
                     <div className={styles.logo__container}>
-                        <img className={styles.login__logo} src='/whitelogo.svg' alt="Logo" />
+                        <img className={styles.login__logo} src={logo} alt="Logo" />
                     </div>
                     <div className={styles.success__info}>
                         <h3 className={styles.success__title}>Регистрация завершена!</h3>
@@ -78,7 +79,7 @@ export const RegisterForm: FC<IRegisterFormProps> = ({ onSuccess }) => {
             ) : (
                 <form className={styles.register__container}>
                     <div className={styles.logo__container}>
-                        <img className={styles.login__logo} src='/whitelogo.svg' alt="Logo" />
+                        <img className={styles.login__logo} src={logo} alt="Logo" />
                     </div>
                     <div className={styles.login__form}>
                         <div className={styles.box}>

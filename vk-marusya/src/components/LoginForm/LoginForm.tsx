@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
-import styles from './LoginForm.module.css'
+import styles from './LoginForm.module.css';
+import logo from '../../assets/blacklogo.png';
 import { queryClient } from '../../api/queryClient';
 import { FC, useState } from 'react';
 import { loginUser } from '../../api/Users';
@@ -51,7 +52,7 @@ export const LoginForm: FC<ILoginFormProps> = ({ onSuccess, onClose }) => {
     return (
         <form className={styles.login__container}>
             <div className={styles.logo__container}>
-                <img className={styles.login__logo} src='/whitelogo.svg' alt="Logo" />
+                <img className={styles.login__logo} src={logo} alt="Logo" />
             </div>
             <div className={styles.login__form}>
                 <div className={styles.box}>
