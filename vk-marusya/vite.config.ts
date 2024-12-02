@@ -10,5 +10,6 @@ export default defineConfig({
             additionalData: `@import "./src/fonts/Play.css";`
         }
     }
-  }
+  },
+  base: '/vk-marusya/',
 })
