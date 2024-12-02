@@ -1,6 +1,6 @@
 import styles from './Header.module.css'
 import logo from '../../assets/logo.png'
-import small__logo from '../../assets/logo__small.png'
+import small__logo from '/logo__small.png'
 import { Button } from "../Button/Button"
 import { SearchBar } from "../SearchBar/SearchBar"
 import { Link } from 'react-router-dom'
