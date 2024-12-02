@@ -13,7 +13,8 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    background: linear-gradient(135deg, #2af598 0%, #009efd 50%, #45B7D1 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,7 +52,12 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
+    /* background-color: rgba(255, 255, 255, 0.5); */
+    background: linear-gradient(135deg, 
+        #60a5fa 0%, 
+        #3b82f6 50%,
+        #2563eb 100%
+    );
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './GenresList.module.css'
 import { GenreType } from '../../types/GenreType';
 import { getGenresList } from '../../api/Movies';
 import { Load } from '../Loader/Loader';
 import { Link } from 'react-router-dom';
 import { generateNiceGradient } from '../../utils/gradientGenerator';
+import { genresListAnimation } from '../../animations/animations';
 
 
 export const GenresList = () => {
     const [list, setList] = useState<GenreType | null>(null);
     const [loading, setLoading] = useState(true);
+    const listRef = useRef<HTMLUListElement>(null);
+    const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
+    const animationPlayedRef = useRef(false);
 
     useEffect(() => {
         const fetchGenresList = async () => {
@@ -20,6 +24,28 @@ export const GenresList = () => {
         fetchGenresList();
     }, [])
 
+    useEffect(() => {
+        if (!loading && listRef.current && !animationPlayedRef.current) {
+            const elements = itemRefs.current.filter((ref): ref is HTMLLIElement => ref !== null);
+            if (elements.length > 0) {
+                genresListAnimation.stagger(elements);
+                animationPlayedRef.current = true;
+            }
+        }
+    }, [loading])
+
+    const handleMouseEnter = (index: number) => {
+        if (itemRefs.current[index]) {
+            genresListAnimation.hover(itemRefs.current[index]!);
+        }
+    };
+
+    const handleMouseLeave = (index: number) => {
+        if (itemRefs.current[index]) {
+            genresListAnimation.unhover(itemRefs.current[index]!);
+        }
+    };
+
     return (
         <div>
             {loading ? (
@@ -28,9 +54,15 @@ export const GenresList = () => {
                 <div className={styles.container}>
                     <div className={styles.genres__container}>
                         <h1 className={styles.genres__title}>Жанры фильмов</h1>
-                        <ul className={styles.genres__list}>
+                        <ul ref={listRef} className={styles.genres__list}>
                             {Array.isArray(list) && list.map((item, index) => (
-                                <li className={styles.genre__item} key={index}>
+                                <li 
+                                    ref={el => itemRefs.current[index] = el}
+                                    className={styles.genre__item} 
+                                    key={index}
+                                    onMouseEnter={() => handleMouseEnter(index)}
+                                    onMouseLeave={() => handleMouseLeave(index)}
+                                >
                                     <Link to={`/genres/${item}`} className={styles.genre__link}>
                                         <div 
                                             className={styles.genre__image}

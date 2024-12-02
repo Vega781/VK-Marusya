@@ -3,7 +3,7 @@ import { AccountSettings } from '../../components/AccountSettings/AccountSetting
 import { Button } from '../../components/Button/Button'
 import styles from './UserPage.module.css'
 import { fetchMe, ProfileType } from '../../api/Users'
-import { FavoriteList } from '../../components/FavoriteList/FaworiteList'
+import { FavoriteList } from '../../components/FavoriteList/FavoriteList'
 
 export const UserPage = () => {
     const [activeTab, setActiveTab] = useState('favorites')

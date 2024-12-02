@@ -5,7 +5,7 @@ import { showGenres } from "../../utils/showGenres"
 import { convertRunTime } from "../../utils/convertRunTime"
 import { ratingColor } from "../../utils/ratingColor"
 import { getRandomMovie } from "../../api/Movies"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { MovieType } from "../../types/MovieType"
 import { Load } from "../Loader/Loader"
 import { Link } from "react-router-dom"
@@ -13,8 +13,10 @@ import { TrailerModal } from "../TrailerModal/TrailerModal"
 import { useAuth } from "../../hooks/useAuth"
 import { AuthForm } from "../AuthForm/AuthForm"
 import { useAddToFavorite } from "../../hooks/useAddToFavorite"
+import { randomMovieAnimation } from "../../animations/animations"
 
 export const RandomMovie = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
     const { isAuthenticated } = useAuth()
     const [isAuthOpen, setIsAuthOpen] = useState(false)
     const [isAdded, setIsAdded] = useState(false)
@@ -28,15 +30,23 @@ export const RandomMovie = () => {
             const res = await getRandomMovie();
             setMovie(res);
             setLoading(false);
+            
+            if (containerRef.current) {
+                randomMovieAnimation.enter(containerRef.current);
+            }
         };
         fetchRandomMovie();
     }, [])
 
     const handleRandomMovie = async () => {
-        setLoading(true)
-        setMovie(await getRandomMovie())
-        setLoading(false)
-        setIsAdded(false)
+        setLoading(true);
+        if (containerRef.current) {
+            await randomMovieAnimation.shuffle(containerRef.current);
+        }
+        const newMovie = await getRandomMovie();
+        setMovie(newMovie);
+        setLoading(false);
+        setIsAdded(false);
     }
 
     const handleAddFavorite = async () => {
@@ -55,7 +65,7 @@ export const RandomMovie = () => {
             {loading ? (
                 <Load type="box-rotate-z" bgColor={'white'} title={'LOADING...'} size={100} />
             ) : (
-                <div className={styles.random__container}>
+                <div ref={containerRef} className={styles.random__container}>
                     <div className={styles.content__1300}>
                         <ImageComponent path={movie.backdropUrl ? movie.backdropUrl : movie.posterUrl} alt={'MainPage Image'} className={styles.main__image} />
                     </div>

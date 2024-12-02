@@ -11,7 +11,7 @@
     margin: 20px;
     max-width: 560px;
     max-height: 480px;
-    /* width: 100%; */
+    width: 100%;
     border-radius: 8px;
     z-index: 2;
     background-color: #393B3C;
@@ -132,4 +132,10 @@
         margin: 0;
         margin-top: 20px;
     } */
+}
+
+.no_results {
+    padding: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
 }
