@@ -11,5 +11,5 @@ export default defineConfig({
         }
     }
   },
-  base: '/vk-marusya/',
+  base: '/название-репозитория/',
 })
