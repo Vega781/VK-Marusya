@@ -3,7 +3,7 @@ import { AnimatePresence } from 'framer-motion'
 import styles from './App.module.css'
 import { Footer } from './components/Footer/Footer'
 import { Header } from './components/Header/Header'
-import { MainPage } from './pages/MainPage/MainPage'
+import { MainPage } from './pages/mainPage/mainPage'
 import { GenresPage } from './pages/genresPage/GenresPage'
 import { ListByGenre } from './components/ListByGenre/ListByGenre'
 import { MoviePage } from './pages/MoviePage/MoviePage'
@@ -65,7 +65,7 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <Provider store={store}>
-                <BrowserRouter>
+                <BrowserRouter basename="/vk-marusya">
                     <div className={styles.container} ref={containerRef}>
                         <Header />
                         <AnimatedRoutes />
