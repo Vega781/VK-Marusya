@@ -56,4 +56,3 @@ npm run build
 - `npm run build` - build project
 - `npm run lint` - check code
 - `npm run preview` - preview build
-
