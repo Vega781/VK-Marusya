@@ -15,12 +15,13 @@ import { queryClient } from './api/queryClient'
 import { useEffect, useRef } from 'react'
 import { fadeIn } from './animations/animations'
 import { AnimatedRoute } from './components/AnimatedRoute/AnimatedRoute'
+import './styles/customScroll.css';
 
 function AnimatedRoutes() {
     const location = useLocation();
     
     return (
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
             <Routes location={location} key={location.pathname}>
                 <Route path="/" element={
                     <AnimatedRoute>

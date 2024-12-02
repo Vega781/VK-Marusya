@@ -25,7 +25,6 @@ export const searchAnimations = {
     item: {
         hidden: { 
             opacity: 0,
-            x: -20
         },
         visible: { 
             opacity: 1,
